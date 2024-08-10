@@ -11,7 +11,16 @@
 #ifndef DHT11_h
 #define DHT11_h
 
+#ifdef VEGA_YK
+#include <string>
+
+#include "stdlib.h"
+#include "gpio_i.h"
+#define byte unsigned char
+#define String std::string
+#else
 #include "Arduino.h"
+#endif
 
 /**
  * DHT11 Class

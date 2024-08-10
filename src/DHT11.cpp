@@ -9,6 +9,17 @@
 
 #include "DHT11.h"
 
+#ifdef VEGA_YK
+
+#define HIGH GPIO_HIGH
+#define LOW GPIO_LOW
+#define pinMode(x,y) 
+#define digitalWrite(x,y) (gpio_write((gpio_pin)x, y))
+#define digitalRead(x) ({gpio_operation _v; gpio_read((gpio_pin)x, &_v); _v;})
+#define delayMicroseconds(x) (udelay(x))
+
+#endif
+
 /**
  * Constructor for the DHT11 class.
  * Initializes the pin to be used for communication and sets it to output mode.
