@@ -93,6 +93,7 @@ int DHT11::readRawData(byte data[5])
 byte DHT11::readByte()
 {
   byte value = 0;
+  unsigned long timeout_start;
 
   for (int i = 0; i < 8; i++)
   {
@@ -103,8 +104,12 @@ byte DHT11::readByte()
     {
       value |= (1 << (7 - i));
     }
+
+    timeout_start = micros();
     while (digitalRead(_pin) == HIGH)
-      ;
+        if(micros() - timeout_start > SENSE_TIMEOUT_DURATION)
+            return ERROR_TIMEOUT;
+
   }
   return value;
 }
