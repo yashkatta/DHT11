@@ -74,7 +74,7 @@ public:
   static const int ERROR_CHECKSUM = 254;    // Error code indicating checksum mismatch.
   static const int ERROR_TIMEOUT = 253;     // Error code indicating a timeout occurred during reading.
   static const int TIMEOUT_DURATION = 1000; // Duration (in milliseconds) to wait before timing out.
-
+  static const int SENSE_TIMEOUT_DURATION = 42; // Duration (in microsseconds) to wait before timing out.
   /**
    * Returns a human-readable error message based on the provided error code.
    *
